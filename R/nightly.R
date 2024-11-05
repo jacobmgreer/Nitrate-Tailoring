@@ -7,7 +7,7 @@ rm(required)
 dir.create("nightlies", showWarnings = F)
 dir.create("updates", showWarnings = F)
 
-since = Sys.Date() - 1 ## yesteday
+since = Sys.Date() - 2 ## always 48 hours behind
 
 TMAPI <- Sys.getenv("TMAPI") ## API key defined in Repo
 
