@@ -12,10 +12,15 @@ for (i in c(2:fromJSON("updates/content/0001.json")$total_pages)) {
   Sys.sleep(0.1)
 }
 
+fix_NULL <- function(variables) {
+  variables <- variables %>%
+    map(~ ifelse(is.null(.x), NA, .x))
+  tibble::as_tibble(variables)
+}
+
 tm_content <-
   list.files("updates/content", full.names = T) %>%
-  map_dfr(., fromJSON) %>%
-  mutate(results = as.data.frame(results)) %>%
+  map_dfr(~ fromJSON(.x) %>% compact()) %>%
   pull(results) %>%
   reframe(id)
   
