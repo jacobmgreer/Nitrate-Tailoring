@@ -14,7 +14,8 @@ for (i in c(2:fromJSON("updates/content/0001.json")$total_pages)) {
 
 tm_content <-
   list.files("updates/content", full.names = T) %>%
-  map_dfr(~ tibble::as_tibble(fromJSON(.x))) %>%
+  map_dfr(., fromJSON) %>%
+  mutate(results = as.data.frame(results)) %>%
   pull(results) %>%
   reframe(id)
   
