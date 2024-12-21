@@ -17,5 +17,5 @@ tryCatch(
     
     dir.create("nightlies/qid-film", showWarnings = F)
     write_parquet(query_results, "nightlies/qid-film/nightly.parquet")
-  }
+  }, error = function(cond)"skip"
 )

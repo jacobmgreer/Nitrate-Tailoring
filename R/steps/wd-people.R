@@ -15,7 +15,7 @@ tryCatch(
       reframe(
         QID = basename(item$value))
     write_parquet(counts, "nightlies/qid-person/count-performing-artists.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -29,7 +29,7 @@ tryCatch(
       reframe(
         QID = basename(item$value))
     write_parquet(counts, "nightlies/qid-person/count-filmmakers.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -43,7 +43,7 @@ tryCatch(
       reframe(
         QID = basename(item$value))
     write_parquet(counts, "nightlies/qid-person/count-creative-directors.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -57,7 +57,7 @@ tryCatch(
       reframe(
         QID = basename(item$value))
     write_parquet(counts, "nightlies/qid-person/count-bands.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -71,7 +71,7 @@ tryCatch(
       reframe(
         QID = basename(item$value))
     write_parquet(counts, "nightlies/qid-person/count-discogsArtistID.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -85,7 +85,7 @@ tryCatch(
       reframe(
         QID = basename(item$value))
     write_parquet(counts, "nightlies/qid-person/count-musical-profession.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -99,7 +99,7 @@ tryCatch(
       reframe(
         QID = basename(item$value))
     write_parquet(counts, "nightlies/qid-person/count-musicians.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 
@@ -118,7 +118,7 @@ tryCatch(
         updated = substr(date$value, 1, 10),
         file = paste0(updated, "-", QID, ".rds"))
     write_parquet(counts, "nightlies/qid-person/recent-creative-directors.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -134,7 +134,7 @@ tryCatch(
         updated = substr(date$value, 1, 10),
         file = paste0(updated, "-", QID, ".rds"))
     write_parquet(counts, "nightlies/qid-person/recent-filmmakers.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -150,7 +150,7 @@ tryCatch(
         updated = substr(date$value, 1, 10),
         file = paste0(updated, "-", QID, ".rds"))
     write_parquet(counts, "nightlies/qid-person/recent-performing-artists.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -166,7 +166,7 @@ tryCatch(
         updated = substr(date$value, 1, 10),
         file = paste0(updated, "-", QID, ".rds"))
     write_parquet(counts, "nightlies/qid-person/recent-bands.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -182,7 +182,7 @@ tryCatch(
         updated = substr(date$value, 1, 10),
         file = paste0(updated, "-", QID, ".rds"))
     write_parquet(counts, "nightlies/qid-person/recent-discogsArtistID.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -198,7 +198,7 @@ tryCatch(
         updated = substr(date$value, 1, 10),
         file = paste0(updated, "-", QID, ".rds"))
     write_parquet(counts, "nightlies/qid-person/recent-musical-profession.parquet")
-  }
+  }, error = function(cond)"skip"
 )
 
 tryCatch(
@@ -214,5 +214,5 @@ tryCatch(
         updated = substr(date$value, 1, 10),
         file = paste0(updated, "-", QID, ".rds"))
     write_parquet(counts, "nightlies/qid-person/recent-musicians.parquet")
-  }
+  }, error = function(cond)"skip"
 )

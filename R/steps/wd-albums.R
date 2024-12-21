@@ -16,5 +16,5 @@ tryCatch(
     
     dir.create("nightlies/qid-album", showWarnings = F)
     write_parquet(query_results, "nightlies/qid-album/nightly.parquet")
-  }
+  }, error = function(cond)"skip"
 )
