@@ -12,11 +12,15 @@ for (i in c(2:fromJSON("updates/people/0001.json")$total_pages)) {
   Sys.sleep(0.1)
 }
 
-tm_people <-
-  list.files("updates/people", full.names = T) %>%
-  map_dfr(~ fromJSON(.x) %>% compact()) %>%
-  pull(results) %>%
-  reframe(id)
-
-dir.create("nightlies/tm-people", showWarnings = F)
-write_parquet(tm_people, paste0("nightlies/tm-people/", since, ".parquet"))
+tryCatch(
+  expr = {
+    tm_people <-
+      list.files("updates/people", full.names = T) %>%
+      map_dfr(~ fromJSON(.x) %>% compact()) %>%
+      pull(results) %>%
+      reframe(id)
+    
+    dir.create("nightlies/tm-people", showWarnings = F)
+    write_parquet(tm_people, paste0("nightlies/tm-people/", since, ".parquet"))
+  }
+)

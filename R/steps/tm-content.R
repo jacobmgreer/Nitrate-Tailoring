@@ -18,11 +18,15 @@ fix_NULL <- function(variables) {
   tibble::as_tibble(variables)
 }
 
-tm_content <-
-  list.files("updates/content", full.names = T) %>%
-  map_dfr(~ fromJSON(.x) %>% compact()) %>%
-  pull(results) %>%
-  reframe(id)
-  
-dir.create("nightlies/tm-content", showWarnings = F)
-write_parquet(tm_content, paste0("nightlies/tm-content/", since, ".parquet"))
+tryCatch(
+  expr = {
+    tm_content <-
+      list.files("updates/content", full.names = T) %>%
+      map_dfr(~ fromJSON(.x) %>% compact()) %>%
+      pull(results) %>%
+      reframe(id)
+      
+    dir.create("nightlies/tm-content", showWarnings = F)
+    write_parquet(tm_content, paste0("nightlies/tm-content/", since, ".parquet"))
+  }
+)
