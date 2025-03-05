@@ -1,5 +1,5 @@
 ## TMDb People
-dir.create("updates/people", showWarnings = F)
+dir.create("updates/people", showWarnings = F, recursive = T)
 
 download.file(
   url = paste0("https://api.themoviedb.org/3/person/changes?api_key=", TMAPI, "&page=1&start_date=", since, "&end_date=", since),

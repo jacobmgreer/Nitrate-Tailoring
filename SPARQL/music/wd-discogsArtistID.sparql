@@ -1,6 +1,0 @@
-SELECT ?item ?ArtistID ?date WHERE {
-  ?item wdt:P1953 ?ArtistID;
-    schema:dateModified ?date.
-  BIND (now() - ?date as ?date_range)
-  FILTER (?date_range < 30)
-}
