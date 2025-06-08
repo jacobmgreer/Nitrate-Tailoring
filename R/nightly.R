@@ -8,6 +8,7 @@ TMAPI <- Sys.getenv("TMAPI") ## API key defined in Repo
 
 source("R/steps/tm-content.R")
 source("R/steps/tm-people.R")
+source("R/steps/tm-series.R")
 
 unlink("updates", recursive = T, force = T)
 
