@@ -1,5 +1,5 @@
 ## TMDb Content
-dir.create("updates/content", showWarnings = F, recursive = T)
+dir.create("updates/series", showWarnings = F, recursive = T)
 
 download.file(
   url = paste0("https://api.themoviedb.org/3/tv/changes?api_key=", TMAPI, "&page=1&start_date=", since),
